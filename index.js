@@ -14,11 +14,11 @@ app.use(express.static(__dirname + '/public'));
 // }
 
 var regionName = "";
-var geoRequest = request("http://freegeoip.net/json/", function(error, response, body) {
+var geoRequest = request("http://ip-api.com/json/", function(error, response, body) {
     if (!error && response.statusCode == 200) {
         var parsed = JSON.parse(body);
         geoRequest = parsed["city"]; 
-        regionName = parsed["region_name"];
+        regionName = parsed["regionName"];
     } 
 });
 
