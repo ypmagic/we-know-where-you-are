@@ -13,9 +13,16 @@ app.use(express.static(__dirname + '/public'));
 //     })
 // }
 
+var ipAddress = request("https://api.ipify.org?format=json", function(error, response, body) {
+    if (!error && response.statusCode == 200) {
+        var parsed = JSON.parse(body);
+        ipAddress = parsed["ip"];
+    }
+});
+
 
 var regionName = "";
-var geoRequest = request("http://freegeoip.net/json/", function(error, response, body) {
+var geoRequest = request("http://freegeoip.net/json/" + ipAddress, function(error, response, body) {
     if (!error && response.statusCode == 200) {
         var parsed = JSON.parse(body);
         geoRequest = parsed["city"]; 
