@@ -23,7 +23,7 @@ app.get("/", function(req, res) {
     } else {
         ipAddr = req.connection.remoteAddress;
     }
-    var geoRequest = request("http://ip-api.com/json/", function(error, response, body) {
+    var geoRequest = request("http://ip-api.com/json/" + ipAddr, function(error, response, body) {
         if (!error && response.statusCode == 200) {
             var parsed = JSON.parse(body);
             geoRequest = parsed["city"]; 
