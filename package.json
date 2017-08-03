@@ -1,0 +1,16 @@
+{
+  "name": "i-know-where",
+  "version": "1.0.0",
+  "description": "Uses geolocation API to retrieve the user's city, then shows where the person lives.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Young",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.15.3",
+    "request": "^2.81.0"
+  }
+}

@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,600,700');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-family: Raleway;
+  font-weight: 400;
+  width: 100%;
+}
+
+/* TOP LOGO AREA */
+
+header {
+  height: 100px;
+  position: relative;
+  border-bottom: 4px solid #e24e42;
+}
+
+.logo {
+  margin-top: 20px;
+}
+
+.logo img {
+  display: block;
+  width: 10em;
+  margin: 0 auto;
+}
+
+/* BACKGROUND */
+
+.background {
+  height: 250px;
+  background: linear-gradient(to top right, rgba(0, 143, 149, 0.8), rgba(0, 143, 149, 0.8)), url("25.10.12.png");
+  background-position: center;
+}
+
+/* CONTENT */
+
+.container {
+  height: 500px;
+}
+
+.inner-container {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  height: 500px;
+}
+
+.inner-container-left {
+  box-sizing: border-box;
+  width: 45%;
+  float: left;
+  display: inline-block;
+  margin-right: 5%;
+  margin-top: 40px;
+  height: 200px;
+  background: #eb6e80;
+  color: #fff;
+  animation: fadein 1s;
+}
+
+.inner-container-right {
+  width: 50%;
+  display: inline-block;
+  margin-top: 40px;
+  background: #e9b000;
+  color: #fff;
+  min-height: 300px;
+  max-height: 450px;
+  animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.you-live h1, h2 {
+  font-weight: 400;
+  text-align: center;
+}
+
+.you-live h2 {
+  font-size: 1.2em;
+}
+
+.you-live h1 {
+  font-size: 3em;
+  text-transform: uppercase;
+}
+
+.center {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.city-description :not(.center) {
+  padding-left: 20px;
+}
+
+/* FOOTER */
+
+.foot {
+  background: #e24e42;
+  color: #fff;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.foot p {
+  text-align: center;
+}
+
+.foot a {
+  display: block;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+}
+
+.foot a:hover {
+  font-weight: 600;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 790px) {
+  .inner-container-left {
+    display: block;
+    width: 100%;
+  }
+
+  .inner-container-right {
+    width: 100%;
+  }
+
+  .container {
+    height: 800px;
+  }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/landing.css">
+    <title>We Know Where You Live</title>
+  </head>
+  <body>
+    <header>
+      <!-- FLOAT THIS TO THE TOP LEFT -->
+      <div class="logo">
+        <img src="/weknow.jpg" alt="">
+      </div>
+    </header>
+    <!-- PUT GOOGLE MAP BACKGROUND IMAGE HERE -->
+    <section class="background"></section>
+    <div class="container">
+      <!-- CENTER THIS -->
+      <div class="inner-container">
+          <!-- YOU LIVE IN -->
+        <div class="inner-container-left">
+          <section class="you-live">
+            <h2>You live in...</h2>
+            <h1><%= city %></h1>
+          </section>
+        </div>
+        <div class="inner-container-right">
+          <section class="city-description">
+            <p class="center">Additional information on <%= city %>...</p>
+            <p><%= text %></p>
+          </section>
+        </div>
+      </div>
+    </div>
+    <!-- SIMPLE FOOTER -->
+    <footer>
+      <div class="foot">
+        <p>2017 &copy; Young Park. All rights reserved.</p>
+        <a href="http://www.youngwpark.com">Visit My Website</a>
+      </div>
+    </footer>
+  </body>
+</html>
