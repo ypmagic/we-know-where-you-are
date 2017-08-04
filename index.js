@@ -67,11 +67,11 @@ app.get("/", function(req, res) {
 
 });
 
-// var port = process.env.PORT || 8000;
-// server.listen(port, function() {
-//     console.log("App is running on port " + port);
-// });
-
-app.listen(process.env.PORT, process.env.IP, function() {
-    console.log("The server has started.");
+var port = process.env.PORT || 8000;
+server.listen(port, function() {
+    console.log("App is running on port " + port);
 });
+
+// app.listen(process.env.PORT, process.env.IP, function() {
+//     console.log("The server has started.");
+// });
