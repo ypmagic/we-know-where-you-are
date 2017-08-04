@@ -17,10 +17,10 @@ app.use(express.static(__dirname + '/public'));
 function getCity(ip, callback) {
     var city = "";
     var regionName = "";
-    request("http://ip-api.com/json/" + ip, function(error, response, body) {
+    request("https://freegeoip.net/json/" + ip, function(error, response, body) {
         var parsed = JSON.parse(body);
         city += parsed["city"];
-        regionName += parsed["regionName"];
+        regionName += parsed["region_name"];
         callback({
             city: city,
             regionName: regionName
@@ -39,7 +39,7 @@ app.get("/", function(req, res) {
                 var parsed = JSON.parse(body);
                 var pageId = parsed["query"]["pageids"][0];
                 extract = parsed["query"]["pages"][pageId]["extract"];
-                if (extract.includes("refer") || extract.includes("alternative") || extract.includes("refers") || extract.includes("several")) {
+                if (extract.includes("refer") || extract.includes("alternative") || extract.includes("refers") || extract.includes("several") || extract === "") {
                     var secondReq = request("https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&indexpageids&exintro=&explaintext=&titles=" + geoRequest["city"] + ", " + geoRequest["regionName"], function(error, response, body) {
                         if (!error && response.statusCode == 200) {
                             var parsed = JSON.parse(body);
@@ -67,11 +67,11 @@ app.get("/", function(req, res) {
 
 });
 
-var port = process.env.PORT || 8000;
-server.listen(port, function() {
-    console.log("App is running on port " + port);
-});
-
-// app.listen(process.env.PORT, process.env.IP, function() {
-//     console.log("The server has started.");
+// var port = process.env.PORT || 8000;
+// server.listen(port, function() {
+//     console.log("App is running on port " + port);
 // });
+
+app.listen(process.env.PORT, process.env.IP, function() {
+    console.log("The server has started.");
+});
