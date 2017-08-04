@@ -17,13 +17,16 @@ app.use(express.static(__dirname + '/public'));
 function getCity(ip, callback) {
     var city = "";
     var regionName = "";
+    var countryCode = "";
     request("https://freegeoip.net/json/" + ip, function(error, response, body) {
         var parsed = JSON.parse(body);
         city += parsed["city"];
         regionName += parsed["region_name"];
+        countryCode += parsed["country_code"];
         callback({
             city: city,
-            regionName: regionName
+            regionName: regionName,
+            countryCode: countryCode
         })
         return;
     });
@@ -39,7 +42,7 @@ app.get("/", function(req, res) {
                 var parsed = JSON.parse(body);
                 var pageId = parsed["query"]["pageids"][0];
                 extract = parsed["query"]["pages"][pageId]["extract"];
-                if (extract.includes("refer") || extract.includes("alternative") || extract.includes("refers") || extract.includes("several") || extract === "") {
+                if (geoRequest["countryCode"] === "US" && (extract.includes("refer") || extract.includes("alternative") || extract.includes("refers") || extract.includes("several") || extract === "")) {
                     var secondReq = request("https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&indexpageids&exintro=&explaintext=&titles=" + geoRequest["city"] + ", " + geoRequest["regionName"], function(error, response, body) {
                         if (!error && response.statusCode == 200) {
                             var parsed = JSON.parse(body);
