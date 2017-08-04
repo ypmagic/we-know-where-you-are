@@ -13,9 +13,16 @@ app.use(express.static(__dirname + '/public'));
 //     })
 // }
 
+var regionName = "";
+var geoRequest = request("http://ip-api.com/json/", function(error, response, body) {
+    if (!error && response.statusCode == 200) {
+        var parsed = JSON.parse(body);
+        geoRequest = parsed["city"]; 
+        regionName = parsed["regionName"];
+    } 
+});
+
 app.get("/", function(req, res) {
-    var regionName = "";
-    var extract = "";
     // var ipAddr = req.headers["x-forwarded-for"];
     // if (ipAddr){
     //     var list = ipAddr.split(",");
@@ -23,13 +30,7 @@ app.get("/", function(req, res) {
     // } else {
     //     ipAddr = req.connection.remoteAddress;
     // }
-    var geoRequest = request("http://ip-api.com/json/", function(error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var parsed = JSON.parse(body);
-            geoRequest = parsed["city"]; 
-            regionName = parsed["regionName"];
-        } 
-    });
+    var extract = "";
     var wikiText = request("https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&indexpageids&exintro=&explaintext=&titles=" + geoRequest, function(error, response, body) {
         if (!error && response.statusCode == 200) {
             var parsed = JSON.parse(body);
