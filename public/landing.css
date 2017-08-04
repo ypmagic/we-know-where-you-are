@@ -70,7 +70,7 @@ header {
   min-height: 300px;
   max-height: 450px;
   animation: fadein 2s;
-  overflow: hidden;
+  overflow: scroll;
 }
 
 @keyframes fadein {
