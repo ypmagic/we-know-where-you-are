@@ -7,7 +7,7 @@ var express = require("express"),
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + '/public'));
 
-var weirdCities = ["refer", "alternative", "refers"];
+var weirdCities = ["refer", "alternative", "refers", "several"];
 
 function getCity(ip, callback) {
     var city = "";
