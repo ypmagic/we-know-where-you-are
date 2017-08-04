@@ -39,7 +39,7 @@ app.get("/", function(req, res) {
                 var parsed = JSON.parse(body);
                 var pageId = parsed["query"]["pageids"][0];
                 extract = parsed["query"]["pages"][pageId]["extract"];
-                if (extract.includes("refer") || extract.includes("alternative") || extract.includes("refers") || extract.includes("several") || extract === "" || extract.includes("redirect")) {
+                if (extract.includes("refer") || extract.includes("alternative") || extract.includes("refers") || extract.includes("several") || extract === "" || extract.includes("redirects")) {
                     var secondReq = request("https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&indexpageids&exintro=&explaintext=&titles=" + geoRequest["city"] + ", " + geoRequest["regionName"], function(error, response, body) {
                         if (!error && response.statusCode == 200) {
                             var parsed = JSON.parse(body);
